@@ -2,7 +2,10 @@ import tkinter as tk
 
 #画面を作る
 root = tk.Tk()
+root.title("金魚の飼い方")
 root.geometry("1280x720")
+
+
 
 #label  変数にLabel(テキスト)を入れる
 # label = tk.Label(root,text="こんにちはまっしゅだよ",font=("Araial",30))
