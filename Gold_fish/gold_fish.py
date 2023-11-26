@@ -1,11 +1,12 @@
 from random import randint
 
 class gold_fish:
-    # life = 0  #ライフであり水質（水の透明度,白いフィルター）
-    # size = 10
-    # color = 10
-    # count = 16
-    # fish_die = False
+    life = 0  #ライフであり水質（水の透明度,白いフィルター）
+    size = 10
+    color = 10
+    count = 16
+    fish_die = False
+    
     def __init__(self):
         self.life = 0  #ライフであり水質（水の透明度,白いフィルター）
         self.size = 10
