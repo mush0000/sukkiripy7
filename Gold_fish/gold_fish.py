@@ -6,7 +6,7 @@ class gold_fish:
     color = 10
     count = 16
     fish_die = False
-    
+
     def __init__(self):
         self.life = 0  #ライフであり水質（水の透明度,白いフィルター）
         self.size = 10
