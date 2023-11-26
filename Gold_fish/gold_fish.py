@@ -1,5 +1,6 @@
 from random import randint
 
+#コミット、プッシュのテスト
 class gold_fish:
     life = 0  #ライフであり水質（水の透明度,白いフィルター）
     size = 10
