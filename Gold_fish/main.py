@@ -141,50 +141,50 @@ canvas_breeding.tag_bind(woter_button,"<Button-1>",select_water)
 button_breeding = tk.PhotoImage(file=f"{os.path.dirname(__file__)}/img/bg03_resultA.png")
 
 #3  結果画面表示(ss~Fまでの評価結果,金額表示)
-#ゲーム終了判定------------------------------------------------------------------------------
+screen_result = tk.Frame(root,width=frame_width,height=frame_height)#背景
+canvas_result = tk.Canvas(screen_result,bg="white",width=frame_width,height=frame_height)
+goTitele_botton = tk.PhotoImage(file=f"{os.path.dirname(__file__)}/img/goTitele_botton.png")
 
+
+
+#ゲーム終了判定------------------------------------------------------------------------------
 def total_judge():
-    global button_breeding
+    global button_breeding,screen_result,canvas_result,goTitele_botton
     fish.die_judge()
     judge = fish.fish_die
     print(judge)
     #judge = True   #デバック用
 
     if (judge == True):     #金魚死亡を判定、死んでいたら『リザルト：死亡』へ
-        #ScreenResurtボタンが表示され、クリックで結果画面に切り替える
-        #初期のボタンサイズmemo button_result = tk.Button(screen_result, text="title",image= goTitele_botton, command=show_screen_title,width=30, height=5)
 
+        #ScreenResurtボタンが表示され、クリックで結果画面に切り替える
         # button_breeding = tk.PhotoImage(file=f"{os.path.dirname(__file__)}/img/bg03_resultA.png")
         breeding_button = canvas_breeding.create_image(250,250, image = button_breeding)
         canvas_breeding.tag_bind(breeding_button,"<Button-1>",show_screen_result)
 
-        screen_result = tk.Frame(root,width=frame_width,height=frame_height)
+        #リザルト画面を表示
         screen_result.pack()
-        screen_result.propagate(False)
-
-        #結果画面に切り替える
-        label_result = tk.Label(screen_result, text="ScreenResult")
-        label_result.pack()
-
-        button_result = tk.Button(screen_result, text="title", command=show_screen_title,width=30, height=5)
-        button_result.pack(side=tk.BOTTOM)
+        canvas_result.pack()
+        #タイトルへ戻るボタン
+        result_botton = canvas_result.create_image(250,250, image = goTitele_botton)
+        canvas_result.tag_bind(result_botton,"<Button-1>",show_screen_title)
+        canvas_result.create_text(250, 400, text="タイトルへもどる", anchor="center", font=("HG丸ｺﾞｼｯｸM-PRO",24), fill="dodgerblue")
 
     if(fish.count == 0):    #残りターン数字を判定、『リザルト：通常』へ
         #ScreenResurtボタンが表示され、クリックで結果画面に切り替える
 
-        goResult_botton = tk.PhotoImage(file=f"{os.path.dirname(__file__)}/img/goResult_botton.png",master=screen_breeding)
+        goResult_botton = tk.PhotoImage(file=f"{os.path.dirname(__file__)}/img/goResult_botton.png")
         button_breeding = tk.Button(screen_breeding, text="Result",image= goResult_botton, command=show_screen_result,width=30, height=5)
         button_breeding.pack(side=tk.BOTTOM)
 
         screen_result = tk.Frame(root,width=frame_width,height=frame_height)
         screen_result.pack()
-        screen_result.propagate(False)
 
         #ScreenTitleボタンクリックで結果画面に切り替える
         label_result = tk.Label(screen_result, text="ScreenResult")
         label_result.pack()
 
-        goTitele_botton = tk.PhotoImage(file=f"{os.path.dirname(__file__)}/img/goTitele_botton.png",master=screen_breeding)
+        goTitele_botton = tk.PhotoImage(file=f"{os.path.dirname(__file__)}/img/goTitele_botton.png")
         button_result = tk.Button(screen_result, text="title",image= goTitele_botton, command=show_screen_title,width=30, height=5)
         button_result.pack(side=tk.BOTTOM)
 
